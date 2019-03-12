@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/LearnES.iml" filepath="$PROJECT_DIR$/.idea/LearnES.iml" />
+      <module fileurl="file://$PROJECT_DIR$/es-core-first/es-core-first.iml" filepath="$PROJECT_DIR$/es-core-first/es-core-first.iml" />
+      <module fileurl="file://$PROJECT_DIR$/es-senior/es-senior.iml" filepath="$PROJECT_DIR$/es-senior/es-senior.iml" />
+    </modules>
+  </component>
+</project>
