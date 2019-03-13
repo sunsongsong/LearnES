@@ -10,6 +10,9 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+/**
+ * 课程84
+ */
 public class MGetMultiCarInfoApp {
 	
 	@SuppressWarnings({ "resource", "unchecked" })
@@ -20,7 +23,8 @@ public class MGetMultiCarInfoApp {
 		
 		TransportClient client = new PreBuiltTransportClient(settings)
 				.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300)); 
-	
+
+		//84:基于mget实现多辆汽车的配置与价格对比
 		MultiGetResponse multiGetResponse = client.prepareMultiGet()
 				.add("car_shop", "cars", "1")
 				.add("car_shop", "cars", "2") 

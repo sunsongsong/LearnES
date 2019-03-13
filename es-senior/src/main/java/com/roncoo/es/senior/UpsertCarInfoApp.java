@@ -11,10 +11,15 @@ import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+/**
+ * 课程82、83
+ */
 public class UpsertCarInfoApp {
 	
 	@SuppressWarnings({ "unchecked", "resource" })
 	public static void main(String[] args) throws Exception {
+
+		//82.client集群自动探查 "client.transport.sniff"
 		Settings settings = Settings.builder()
 				.put("cluster.name", "elasticsearch")
 				.put("client.transport.sniff", true)
@@ -31,7 +36,7 @@ public class UpsertCarInfoApp {
 								.field("price", 310000)
 								.field("produce_date", "2017-01-01")
 							.endObject());
-		
+		//83.upsert实现汽车最新价格的调整
 		UpdateRequest updateRequest = new UpdateRequest("car_shop", "cars", "1")
 				.doc(XContentFactory.jsonBuilder()
 						.startObject()

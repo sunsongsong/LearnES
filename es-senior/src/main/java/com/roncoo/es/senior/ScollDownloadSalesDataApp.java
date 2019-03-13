@@ -11,6 +11,9 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+/**
+ * 课程86
+ */
 public class ScollDownloadSalesDataApp {
 	
 	@SuppressWarnings({ "resource", "unchecked" })
@@ -20,8 +23,9 @@ public class ScollDownloadSalesDataApp {
 				.build();
 		
 		TransportClient client = new PreBuiltTransportClient(settings)
-				.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300)); 
-	
+				.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
+
+		//86.基于scroll实现月度销售数据批量下载
 		SearchResponse searchResponse = client.prepareSearch("car_shop") 
 				.setTypes("sales")
 				.setQuery(QueryBuilders.termQuery("brand.keyword", "宝马"))
@@ -30,7 +34,7 @@ public class ScollDownloadSalesDataApp {
 				.get();
 		
 		int batchCount = 0;
-		
+
 		do {
 			for(SearchHit searchHit : searchResponse.getHits().getHits()) {
 				System.out.println("batch: " + ++batchCount); 

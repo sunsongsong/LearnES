@@ -10,6 +10,9 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+/**
+ * 课程88 对汽车品牌进行全文检索、精准查询和前缀搜索
+ */
 public class FullTextSearchByBrand {
 	
 	@SuppressWarnings({ "resource", "unchecked" })
@@ -20,7 +23,8 @@ public class FullTextSearchByBrand {
 		
 		TransportClient client = new PreBuiltTransportClient(settings)
 				.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));  
-	
+
+		//matchQuery 全文检索 会分词
 		SearchResponse searchResponse = client.prepareSearch("car_shop")
 				.setTypes("cars")
 				.setQuery(QueryBuilders.matchQuery("brand", "宝马"))
@@ -31,7 +35,8 @@ public class FullTextSearchByBrand {
 		}
 		
 		System.out.println("====================================================");
-		
+
+		//multiMatchQuery 基于多个关键词 全文检索
 		searchResponse = client.prepareSearch("car_shop")
 				.setTypes("cars")
 				.setQuery(QueryBuilders.multiMatchQuery("宝马", "brand", "name"))  
@@ -42,7 +47,8 @@ public class FullTextSearchByBrand {
 		}
 		
 		System.out.println("====================================================");
-		
+
+		//termQuery 全文检索 不会分词
 		searchResponse = client.prepareSearch("car_shop")
 				.setTypes("cars")
 				.setQuery(QueryBuilders.termQuery("name.raw", "宝马318"))    
@@ -53,7 +59,8 @@ public class FullTextSearchByBrand {
 		}
 		
 		System.out.println("====================================================");
-		
+
+		//prefixQuery 前缀检索
 		searchResponse = client.prepareSearch("car_shop")
 				.setTypes("cars")
 				.setQuery(QueryBuilders.prefixQuery("name", "宝"))      

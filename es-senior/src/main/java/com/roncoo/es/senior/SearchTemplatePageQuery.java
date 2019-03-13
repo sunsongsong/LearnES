@@ -14,6 +14,9 @@ import org.elasticsearch.script.mustache.SearchTemplateRequestBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+/**
+ * 课程87
+ */
 public class SearchTemplatePageQuery {
 	
 	@SuppressWarnings({ "resource", "unchecked" })
@@ -29,7 +32,8 @@ public class SearchTemplatePageQuery {
 		scriptParams.put("from", 0);
 		scriptParams.put("size", 1);
 		scriptParams.put("brand", "宝马");
-		
+
+		//87.基于search template实现按品牌分页查询模板
 		SearchResponse searchResponse = new SearchTemplateRequestBuilder(client)
 				.setScript("page_query_by_brand")
 				.setScriptType(ScriptType.FILE)

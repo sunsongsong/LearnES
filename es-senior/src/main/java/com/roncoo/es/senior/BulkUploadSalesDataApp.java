@@ -14,6 +14,9 @@ import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+/**
+ * 课程85
+ */
 public class BulkUploadSalesDataApp {
 	
 	@SuppressWarnings({ "resource", "unchecked" })
@@ -48,7 +51,8 @@ public class BulkUploadSalesDataApp {
 		
 		DeleteRequestBuilder deleteReqeustBuilder = client.prepareDelete("car_shop", "sales", "2"); 
 		bulkRequestBuilder.add(deleteReqeustBuilder);
-		
+
+		//85.基于bulk实现多4S店销售数据批量上传
 		BulkResponse bulkResponse = bulkRequestBuilder.get();
 		
 		for(BulkItemResponse bulkItemResponse : bulkResponse.getItems()) {

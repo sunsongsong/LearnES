@@ -14,6 +14,9 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+/**
+ * 课程89
+ */
 public class GeoLocationShopSearchApp {
 
 	@SuppressWarnings({ "unchecked", "resource" })
@@ -24,7 +27,8 @@ public class GeoLocationShopSearchApp {
 		
 		TransportClient client = new PreBuiltTransportClient(settings)
 				.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
-		
+
+		//89.基于地理位置对周围汽车4S店进行搜索
 		SearchResponse searchResponse = client.prepareSearch("car_shop")
 				.setTypes("shops")
 				.setQuery(QueryBuilders.geoBoundingBoxQuery("pin.location")

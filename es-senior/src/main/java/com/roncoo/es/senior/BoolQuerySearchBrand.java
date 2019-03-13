@@ -11,6 +11,9 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+/**
+ * 课程89
+ */
 public class BoolQuerySearchBrand {
 	
 	@SuppressWarnings({ "resource", "unchecked" })
@@ -21,7 +24,8 @@ public class BoolQuerySearchBrand {
 		
 		TransportClient client = new PreBuiltTransportClient(settings)
 				.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));  
-	
+
+		//89.对汽车品牌进行多种条件的组合搜索
 		QueryBuilder queryBuilder = QueryBuilders.boolQuery()
 				.must(QueryBuilders.matchQuery("brand", "宝马"))
 				.mustNot(QueryBuilders.termQuery("name.raw", "宝马318"))
